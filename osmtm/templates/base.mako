@@ -46,6 +46,7 @@ comments = []
         var markdown_ref_url = "${request.route_path('markdown_ref')}";
         var unreadMsgsI18n = "${_('You have unread messages')}";
         var map_rules_url = window.location.protocol + '//' + window.location.hostname + ":4200"
+        var map_rules_api_url = window.location.protocol + '//' + window.location.hostname + ":3001"
     </script>
     <%block name="extrascripts"></%block>
 
