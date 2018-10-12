@@ -43,6 +43,13 @@ def main(global_config, **settings):
     load_local_settings(settings)
     settings.update({'version': version})
 
+    ## custom settings
+    maprules_url = settings.get('maprules_url')
+    maprules_api_url = settings.get('maprules_api_url')
+
+    settings['maprules_url'] = maprules_url
+    settings['maprules_api_url'] = maprules_api_url
+
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.metadata.bind = engine
