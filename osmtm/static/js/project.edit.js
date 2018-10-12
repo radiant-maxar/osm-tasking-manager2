@@ -236,11 +236,11 @@ function messageAll(e) {
 }
 
 function setMapRulesFrames(){
-  var editMapRuleUrl = map_rules_url + "/new?name=" + project_id;
+  var editMapRuleUrl = `${map_rules_url}/new?name=${project_id}&nav=hide`;
   if($('#configId').val()){
-    var configUrl = map_rules_url + "/" + $('#configId').val() + "/instructions";
+    var configUrl = `${map_rules_url}/${$('#configId').val()}/instructions?nav=hide`;
     $("#viewMapRulesFrame").attr("src", configUrl);
-    editMapRuleUrl = map_rules_url + "/" + $('#configId').val() + "/edit?name=" + project_id;    
+    editMapRuleUrl = `${map_rules_url}/${$('#configId').val()}/edit?name=${project_id}&nav=hide`;    
   }
   $("#editMapRulesFrame").attr("src", editMapRuleUrl);
 }
@@ -254,7 +254,7 @@ function saveMapRules(){
     }else{
       if(!$("#configId").val() || $("#configId").val() == ""){
         $("#configId").val(event.data);
-        var configUrl = map_rules_url + "/" + $('#configId').val() + "/instructions";
+        var configUrl = `${map_rules_url}/${$('#configId').val()}/instructions?nav=hide`;
         $("#viewMapRulesFrame").attr("src", configUrl);
       }
       $("#editMapRulesModal").modal('hide');
