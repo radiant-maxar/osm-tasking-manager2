@@ -450,6 +450,10 @@ osmtm.project = (function() {
                 }
               });
             }
+            var attribution_config_id = $('#attribution_config_id').val();
+            $.ajax({
+              url: 'http://127.0.0.1:8111/load_maprules?id=' + attribution_config_id
+            });
           }
         }
       });
@@ -499,6 +503,14 @@ osmtm.project = (function() {
           u = imagery_url.substring(imagery_url.indexOf('http'));
           u = u.replace('zoom', 'z');
           url += "&background=custom:" + encodeURIComponent(u);
+        }
+        var attribution_config_id = $('#attribution_config_id').val();
+        // if a uuid is found, there are presets and validations to be had
+        if (/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(attribution_config_id)) {
+          var presets = map_rules_url + '/' + attribution_config_id + '/presets/iD'
+          var validations = map_rules_url + '/' + attribution_config_id + '/rules/iD'
+          url += '&presets=' + presets;
+          url += '&validations=' + validations;
         }
         window.open(url);
         break;
