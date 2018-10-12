@@ -507,8 +507,8 @@ osmtm.project = (function() {
         var attribution_config_id = $('#attribution_config_id').val();
         // if a uuid is found, there are presets and validations to be had
         if (/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(attribution_config_id)) {
-          var presets = map_rules_url + '/' + attribution_config_id + '/presets/iD'
-          var validations = map_rules_url + '/' + attribution_config_id + '/rules/iD'
+          var presets = map_rules_api_url + '/config/' + attribution_config_id + '/presets/iD'
+          var validations = map_rules_api_url + '/config/' + attribution_config_id + '/rules/iD'
           url += '&presets=' + presets;
           url += '&validations=' + validations;
         }
