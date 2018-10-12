@@ -67,29 +67,16 @@ Currently, these are the settings you can over-ride:
  - `default_comment_prefix`: Default prefix to use for changeset comments, defaults to `#hotosm-project`
  - `check_expiration_interval`: The interval at which the database should be checked for expired tasks, in seconds. Defaults to `5` seconds.
 
-#### Adding Custom Settings
-
-For integration with tools like maprules, custom settings are required. Doing so requires 2 steps
-
-1. add the setting name in the local.ini file...
+#### Adding Custom Settings for MapRules
+For integration with tools like maprules, custom settings are required.
+Add the following settings in the local.ini file
 
 ```
 maprules_url=${url.to.maprules.ui}
 maprules_api_url=${url.to.maprules.api}
 ```
 
-2. adding neccessary lines in the ./osmtm/__init__.py file...
-
-```
-## custom settings
-maprules_url = settings.get('maprules_url')
-maprules_api_url = settings.get('maprules_api_url')
-
-settings['maprules_url'] = maprules_url
-settings['maprules_api_url'] = maprules_api_url
-```
-
-...note in the above example, the custom settings are strings.
+Note in the above example, the custom settings are strings.
 Pyramid supports boolean and lists too. [see here](https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/environment.html#adding-a-custom-setting)
 
 
