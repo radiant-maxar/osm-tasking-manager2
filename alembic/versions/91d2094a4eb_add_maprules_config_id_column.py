@@ -1,14 +1,14 @@
 """add maprules config id column
 
-Revision ID: 3d4f41c21888
-Revises: 1bdc819ae210
-Create Date: 2018-10-11 18:36:52.735831
+Revision ID: 91d2094a4eb
+Revises: 5002e75c0604
+Create Date: 2018-10-15 11:18:50.218921
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '3d4f41c21888'
-down_revision = '1bdc819ae210'
+revision = '91d2094a4eb'
+down_revision = '5002e75c0604'
 
 from alembic import op
 import sqlalchemy as sa
