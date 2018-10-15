@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+
+  db:
+    build:
+      context: ./
+      dockerfile: Dockerfile.db
+    restart: always
+    volumes:
+      - postgres-db-volume:/data/postgres
+      - /tmp:/srv
+    networks:
+      - database_network
+
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile.app
+    restart: always
+    command: ["./wait-for-postgres.sh", "db", "./startup-tm.sh"]
+    expose:
+      - 6543
+    environment:
+      - VIRTUAL_PORT=6543
+    networks:
+      - database_network
+      - code_network
+
+volumes:
+  postgres-db-volume:
+
+networks:
+  code_network:
+    driver: bridge
+  database_network:
+    driver: bridge

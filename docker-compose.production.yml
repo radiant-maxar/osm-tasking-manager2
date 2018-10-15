@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  db:
+    cpu_shares: 8
+    cpuset: 0-8
+
+  app:
+    command: ["true"]
+
+  app_green:
+    environment:
+      - VIRTUAL_HOST=tasks.hotosm.org,tasks-green.hotosm.org
+    extends:
+      service: app
+
+  app_blue:
+    environment:
+      - VIRTUAL_HOST=tasks.hotosm.org,tasks-blue.hotosm.org
+    extends:
+      service: app

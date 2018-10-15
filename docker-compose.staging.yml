@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+
+  app:
+    command: ["true"]
+
+  app_green:
+    environment:
+      - VIRTUAL_HOST=tasks-staging.hotosm.org,tasks-staging-green.hotosm.org
+    extends:
+      service: app
+
+  app_blue:
+    environment:
+      - VIRTUAL_HOST=tasks-staging.hotosm.org,tasks-staging-blue.hotosm.org
+    extends:
+      service: app
